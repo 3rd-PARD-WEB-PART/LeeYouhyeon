@@ -41,11 +41,12 @@
   height: calc(100vh - 150px);
   padding: 30px 0; /* 상하 좌우 적용 */
   position: relative;
+  justify-content: center;
 }
 
 .walk_image{
-  width: 400px;
-  height: 400px;
+  width: 500px;
+  height: 500px;
   position: absolute;
   top: 50%;
   left: 70%;
@@ -65,5 +66,74 @@
   }
   to {
     opacity: 0;
+    display: none;
   }
+}
+
+.stand_img{
+  width: 500px;
+  height:500px;
+  position: absolute;
+  top: 50%;
+  left: 0%;
+  opacity: 0;
+  animation: fadeIn 0.1s 13s 1 forwards 
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.talk_box{
+  display: flex;
+  flex-direction: column;
+  border: 5px solid black;
+  text-align: center;
+  width: 800px;
+  height: 300px;
+  position: absolute;
+  padding: 10px 0px;
+  top:15%;
+  justify-content: space-around;
+  align-items: center;
+  font-size: 30px;
+  opacity: 0;
+  animation: fadeIn 1s 13.5s 1 forwards 
+  
+  
+}
+
+.talk1 {
+  display: flex;
+  opacity: 0;
+  animation: fadeIn 1s 14s 1 forwards 
+}
+
+.talk2 {
+  display: flex;
+  opacity: 0;
+  animation: fadeIn 1s 15s 1 forwards 
+}
+
+.talk3 {
+  display: flex;
+  opacity: 0;
+  animation: fadeIn 1s 16s 1 forwards 
+}
+
+.talk4 {
+  display: flex;
+  opacity: 0;
+  animation: fadeIn 1s 17s 1 forwards 
+}
+
+.talk5 {
+  display: flex;
+  opacity: 0;
+  animation: fadeIn 1s 18s 1 forwards 
 }
