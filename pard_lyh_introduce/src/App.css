@@ -1,3 +1,11 @@
+@font-face {
+  font-family: 'Ramche';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2307-1@1.1/Ramche.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+} /* '눈누' 라는 폰트 웹사이트에서 웹폰트 복사해서 붙인다음 적용하고 싶은 부분에 폰트 적용해주면 적용됨 */
+
+
 .App {
   text-align: center;
   display: flex;
@@ -102,6 +110,7 @@
   justify-content: space-around;
   align-items: center;
   font-size: 30px;
+  font-family: 'Ramche';
   opacity: 0;
   animation: fadeIn 1s 13.5s 1 forwards 
   
