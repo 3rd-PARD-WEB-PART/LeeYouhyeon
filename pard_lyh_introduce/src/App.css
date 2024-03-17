@@ -146,3 +146,19 @@
   opacity: 0;
   animation: fadeIn 1s 18s 1 forwards 
 }
+
+.pokemon_img {
+  width: 130px;
+  height: 130px;
+  position: absolute;
+  top: 80%;
+  left: 80%;
+}
+
+.cat_img{
+  width: 150px;
+  height: 150px;
+  position: absolute;
+  top: 80%;
+  left: 90%;
+}
