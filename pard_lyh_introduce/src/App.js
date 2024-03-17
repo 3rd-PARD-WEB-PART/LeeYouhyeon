@@ -3,6 +3,7 @@ import walk from "./Assets/walk1.gif";
 import stand from "./Assets/stand.png";
 import pokemon from "./Assets/pokemon.gif";
 import cat from "./Assets/cat.gif";
+import coffee_milk from "./Assets/coffee_milk.gif";
 
 function App() {
   return (
@@ -14,12 +15,13 @@ function App() {
           <div className="talk_box">
             <span className="talk1">안녕하세요! </span>
             <span className="talk2">저는 21학번 언론정보/ICT 융합 이유현입니다! </span>
-            <span className="talk3">좋아하는 것은 포켓몬 게임, 고양이, 바닐라 라떼입니다. </span>
+            <span className="talk3">좋아하는 것은 바닐라 라떼, 포켓몬 게임, 고양이입니다. </span>
             <span className="talk4">많이 부족하지만 OB로서 열심히 도와드리겠습니다. </span>
             <span className="talk5">잘 부탁드려요!</span>
           </div>
           <img src={pokemon} className="pokemon_img"></img>
           <img src={cat} className="cat_img"></img>
+          <img src={coffee_milk} className="coffee_milk_img"></img>
         </div>
       </div>
       <div className="App_orangeline1"></div>
