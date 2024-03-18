@@ -1,0 +1,177 @@
+@font-face {
+  font-family: 'Ramche';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2307-1@1.1/Ramche.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+} /* '눈누' 라는 폰트 웹사이트에서 웹폰트 복사해서 붙인다음 적용하고 싶은 부분에 폰트 적용해주면 적용됨 */
+
+
+.App {
+  text-align: center;
+  display: flex;
+  /*flex-direction: row 가 디폴트값*/
+  overflow: hidden; /* div 스크롤이 생기지 않도록함 */
+  justify-content: space-between; /*가로축(default) 기준 정렬 */
+  align-items: center; /*세로축 기준 정렬*/
+  background-color: ivory;
+  overflow: hidden;
+  height: 100%;
+}
+
+.container{
+  display: flex;
+  width: 100%; /* 화면창 기준 가로(vw) 100*/
+  position: absolute; /* 부모가 static이 아닐 때 그걸 기준으로 위치가 상대적으로 결정되는데, 그런거 없음으로 body를 기준으로 위치 적용 */
+  border-top: 10px solid orange; /* div 박스의 아랫부분 선 만들기 선의 굵기, 선 타입, 색상 */
+  border-bottom: 10px solid orange;
+  justify-content: center;
+  align-items: center;
+}
+
+.App_orangeline1{
+  display: flex;
+  background-color: orange;
+  height: 100vh;
+  width: 10px;
+  margin-left: 30px;
+  position: relative; /*요소를 원래 위치에서 벗어나 배치할 수 있도록 해줌 */
+}
+
+.App_orangeline2{
+  display: flex;
+  background-color: orange;
+  height: 100vh;
+  width: 10px;
+  margin-right: 30px;
+  position: relative;
+}
+
+.container-box{
+  display: flex;
+  width: calc(100% - 80px);
+  height: calc(100vh - 150px);
+  padding: 30px 0; /* 상하 좌우 적용 */
+  position: relative;
+  justify-content: center;
+}
+
+.walk_image{
+  width: 500px;
+  height: 500px;
+  position: absolute;
+  top: 50%;
+  left: 70%;
+  animation: walk 13s 1 forwards,fadeOut 0.1s 13s 1 forwards 
+  /*walk라는 이름의 애니메이션을 13초 동안 1번만 실행하고 마지막 상태 유지 */
+  /* walk 랑 fadeOut 동시 실행 - fadeOut을 13초 뒤에 0.1초 1번 실행 */
+}
+
+@keyframes walk {
+  0% {left: 70%;}
+  100% {left: 0%;}
+}
+
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+    display: none;
+  }
+}
+
+.stand_img{
+  width: 500px;
+  height:500px;
+  position: absolute;
+  top: 50%;
+  left: 0%;
+  opacity: 0;
+  animation: fadeIn 0.1s 13s 1 forwards 
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.talk_box{
+  display: flex;
+  flex-direction: column;
+  border: 5px solid black;
+  text-align: center;
+  width: 800px;
+  height: 300px;
+  background-color: white;
+  position: absolute;
+  padding: 10px 0px;
+  top:15%;
+  justify-content: space-around;
+  align-items: center;
+  font-size: 30px;
+  font-family: 'Ramche';
+  opacity: 0;
+  animation: fadeIn 1s 13.5s 1 forwards 
+  
+}
+
+.talk1 {
+  display: flex;
+  opacity: 0;
+  animation: fadeIn 1s 14s 1 forwards 
+}
+
+.talk2 {
+  display: flex;
+  opacity: 0;
+  animation: fadeIn 1s 15s 1 forwards 
+}
+
+.talk3 {
+  display: flex;
+  opacity: 0;
+  animation: fadeIn 1s 16s 1 forwards 
+}
+
+.talk4 {
+  display: flex;
+  opacity: 0;
+  animation: fadeIn 1s 17s 1 forwards 
+}
+
+.talk5 {
+  display: flex;
+  opacity: 0;
+  animation: fadeIn 1s 18s 1 forwards 
+}
+
+.pokemon_img {
+  width: 130px;
+  height: 130px;
+  position: absolute;
+  top: 80%;
+  left: 80%;
+
+}
+
+.cat_img{
+  width: 150px;
+  height: 150px;
+  position: absolute;
+  top: 80%;
+  left: 90%;
+}
+
+.coffee_milk_img{
+  width: 130px;
+  height: 230px;
+  background-color: rgba(0, 0, 0, 0);
+  position: absolute;
+  top: 69%;
+  left: 69%;
+}
