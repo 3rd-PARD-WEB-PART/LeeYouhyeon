@@ -1,0 +1,20 @@
+.name{
+    border: 1px solid black;
+    width: 200px;
+}
+
+.email{width: 200px;
+    border: 1px solid black;
+    width: 200px;
+}
+
+.btn{
+    border: none;
+    background-color: skyblue;
+    width: 200px;
+    height: 30px;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+
+}
