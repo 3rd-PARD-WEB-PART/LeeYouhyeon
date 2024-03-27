@@ -3,11 +3,10 @@ import styled from "styled-components";
 
 function RegisterPage() {
   return (
-    <div className="App">
+    <div>
 
     </div>
   );
 }
-
 
 export default RegisterPage;
