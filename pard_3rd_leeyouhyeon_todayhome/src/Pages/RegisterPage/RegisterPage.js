@@ -39,27 +39,27 @@ function RegisterPage() {
 
 const BgDiv =styled.div`
   display: flex;
-  background-color: #EAEBEF;
-  height: 100vh;
-  justify-content: center;
-  align-items: center;
+  background-color: #EAEBEF; //배경색
+  height: 100vh; //화면창 기준 높이를 가득 채움
+  justify-content: center; //flex-direction: row 가 디폴트값(따로 flex-direction를 바꾸지 않으면 row임 ), 가로축 기준 중앙 정렬
+  align-items: center; //세로축 기준 중앙 정렬
 `;
 
 const Div =styled.div`
   display: flex;
-  flex-direction: column;
+  flex-direction: column; //자식 요소들(Div 안에 감싸진 요소들)을 세로로 정렬함
   width: 635px;
   height: 840px;
   background-color: #FFFFFF;
-  align-items: center;
+  align-items: center; //가로축 기준으로 정렬(flex-direction이 row가 아니라 column이 되었음으로 정렬 기준이 바뀜)
 `;
 
 const Top =styled.div`
   display: flex;
   width: 100%;
   height: 112px;
-  justify-content: start;
-  align-items: center;
+  justify-content: start; //가로축 기준 왼쪽 정렬
+  align-items: center; //세로축 기준 중앙정렬
 
 `;
 
@@ -67,7 +67,7 @@ const LogoImg =styled.img`
   display: flex;
   width: 89.424px;
   height: 31px;
-  margin-left: 14px;
+  margin-left: 14px; // 왼쪽에 여백을 주겠다. margin은 LogoImg의 width에 영향을 안주지만, padding으로 할 경우 width 값이 +14px됨
 `;
 
 const ContentFormDiv =styled.form`
@@ -80,14 +80,14 @@ const ContentFormDiv =styled.form`
 const RegisterDiv =styled.div`
   display: flex;
   color: #000;
-  text-align: center;
+  text-align: center; //글자 중앙 정렬
   font-family: Inter;
   font-size: 20px;
   font-style: normal;
   font-weight: 700;
   line-height: normal;
-  margin-top: 20px;
-  margin-bottom: 56px;
+  margin-top: 20px; //위에 여백 줌 
+  margin-bottom: 56px; //아래에 여백 줌
 `;
 
 const SubDiv =styled.div`
@@ -101,12 +101,12 @@ const SubDiv =styled.div`
 `;
 
 const InputDiv =styled.input`
-  width: calc(359px - 38px);
+  width: calc(359px - 38px); //38px은 아래에서 추가한 padding값임. padding은 넓이에 영향을 주기 때문에, input의 넓이를 359px로 만들기 위해서 calc를 통해서 전체 넓이에 패딩값을 빼준 것
   height: 40px;
   flex-shrink: 0;
-  border-radius: 5px;
-  border: 1px solid #DBDBDB;
-  padding: 0 19px;
+  border-radius: 5px; // 박스의 윤곽선을 5px만큼 둥글게 
+  border: 1px solid #DBDBDB; //윤곽선 두깨, 윤곽선 타입(선이나 점 등등), 윤곽선 색
+  padding: 0 19px; // 위아래 패딩 0으로 없애고 좌우 19px 줌
 
   color: #757575;
   font-family: Inter;
@@ -117,7 +117,7 @@ const InputDiv =styled.input`
 
   margin-bottom: 32px;
 
-  &::placeholder{
+  &::placeholder{ //인풋의 플레이스홀더의 폰트 css에 접근
     color: #DBDBDB;
     font-family: Inter;
     font-size: 15px;
@@ -145,7 +145,7 @@ const RegisterBtn =styled.button`
   font-style: normal;
   font-weight: 700;
   line-height: normal;
-  cursor: pointer;
+  cursor: pointer; //버튼에 마우스를 올렸을 때 커서를 변경 
 
   margin-bottom: 29px;
 
@@ -154,7 +154,7 @@ const RegisterBtn =styled.button`
 const LoginDiv =styled.div`
   display: flex;
   flex-direction: row;
-  width: 100%;
+  width: 100%; //부모 요소를 기준으로 넓이 전부 채움
   justify-content: center;
 
   color: #000;
@@ -163,11 +163,11 @@ const LoginDiv =styled.div`
   font-style: normal;
   font-weight: 700;
   line-height: normal;
-  gap: 2px;
+  gap: 2px; //자식 요소들 간의 간격을 2px만큼 띄움
 
-  > a{
+  > a{ //LoginDiv로 감싸진 자식 요소 a 태그에 접근
     color: #000;
-    &:link, :visited, :hover{
+    &:link, :visited, :hover{ //링크를 클릭하기 전, 후, 호버했을 경우
       color: #000;
       cursor: pointer;
     }
