@@ -11,7 +11,9 @@ import vector from "./Assets/Vector 4.png"
 function Header(props){
     const {subIndex} =props;
     const [focusBtn, setFocusBtn] =useState(false);
-    const [indexDetail, setIndexDetail] =useState("모두보기");
+    const [indexDetail, setIndexDetail] =useState(
+    subIndex ==="프로필" ? "모두보기" : "회원정보수정"
+    );
 
     const handleInputFocus = () =>{
         setFocusBtn(true);
