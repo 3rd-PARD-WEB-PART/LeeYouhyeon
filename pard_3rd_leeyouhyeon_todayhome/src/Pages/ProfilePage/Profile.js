@@ -7,6 +7,7 @@ import like from "../../Assets/하트 아이콘.png"
 import coupon from "../../Assets/쿠폰 아이콘.png"
 import like_red from "../../Assets/하트 아이콘(red).png"
 import { useState } from "react";
+import SubIndex from "../../Layout/SubIndex";
 
 function Profile() {
   const [isClicked, setIsClicked] =useState(false);
@@ -17,7 +18,8 @@ function Profile() {
 
   return (
     <Div>
-      <Header subIndex="프로필"/>
+      <Header />
+      <SubIndex subIndex="프로필"/>
       <SeeAllContainer> {/* 모두보기 */}
         <ProfileDiv> 
           <ProfileImg>

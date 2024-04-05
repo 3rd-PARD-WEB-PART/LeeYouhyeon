@@ -1,12 +1,14 @@
 import React from "react";
 import styled from "styled-components";
 import Header from "../../Layout/Header";
+import SubIndex from "../../Layout/SubIndex";
 
 
 function EditProfile() {
   return (
     <Div>
-      <Header subIndex="설정"/>
+      <Header/>
+      <SubIndex subIndex="설정"/> 
       <InfoEditContainer>
       </InfoEditContainer>
     </Div>

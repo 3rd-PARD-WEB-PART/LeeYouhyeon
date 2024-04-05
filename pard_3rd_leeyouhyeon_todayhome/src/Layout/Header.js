@@ -9,8 +9,7 @@ import image from "../Assets/stand.png"
 import vector from "../Assets/Vector 4.png"
 import SubIndex from "./SubIndex";
 
-function Header(props){
-    const {subIndex} =props;
+function Header(){
     const [focusBtn, setFocusBtn] =useState(false);
 
     const handleInputFocus = () =>{
@@ -59,8 +58,6 @@ function Header(props){
             </WrightingBtn>
 
         </Header1>
-
-        <SubIndex subIndex={subIndex}/>
 
         </Container>
     );

@@ -9,8 +9,8 @@ function App() {
     <div className="App">
       {/* <RegisterPage/> */}
       
-      <Profile/>
-      {/* <EditProfile/> */}
+      {/* <Profile/> */}
+      <EditProfile/>
     </div>
   );
 }
