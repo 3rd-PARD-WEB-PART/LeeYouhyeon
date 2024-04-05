@@ -8,7 +8,8 @@ import basket from "./Assets/장바구니 아이콘.png"
 import image from "./Assets/stand.png"
 import vector from "./Assets/Vector 4.png"
 
-function Header(){
+function Header(props){
+    const {subIndex} =props;
     const [focusBtn, setFocusBtn] =useState(false);
 
     const handleInputFocus = () =>{
@@ -57,6 +58,18 @@ function Header(){
             </WrightingBtn>
 
         </Header1>
+
+        <SubIndex>
+            <button style={{color : subIndex == "프로필" ? "#35C5F0" : "#000"}}>프로필</button>
+            <button style={{color : subIndex == "나의 쇼핑" ? "#35C5F0" : "#000"}}>나의 쇼핑</button>
+            <button style={{color : subIndex == "나의 리뷰" ? "#35C5F0" : "#000"}}>나의 리뷰</button>
+            <button style={{color : subIndex == "설정" ? "#35C5F0" : "#000"}}>설정</button>
+        </SubIndex>
+        
+        <SubIndexDetail>
+
+        </SubIndexDetail>
+
         </Container>
     );
 }
@@ -228,6 +241,31 @@ const WrightingBtn =styled.button`
     line-height: normal;
     gap: 8px;
     cursor: pointer;
+`;
+
+const SubIndex =styled.div`
+    display: flex;
+    flex-direction: row;
+    height: 64px;
+    border-bottom: 1px solid #EAEBEF;
+    background: #FFF;
+    justify-content: center;
+    align-items: center;
+
+    gap: 51px;
+
+    > button {
+        border: none;
+        background-color: white;
+        color: #000;
+        text-align: center;
+        font-family: Inter;
+        font-size: 18px;
+        font-style: normal;
+        font-weight: 700;
+        line-height: normal;
+        cursor: pointer;
+    }
 `;
 
 export default Header;

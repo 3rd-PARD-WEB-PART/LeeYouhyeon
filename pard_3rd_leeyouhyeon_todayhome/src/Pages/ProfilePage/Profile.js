@@ -5,7 +5,7 @@ import Header from "../../Header";
 function Profile() {
   return (
     <div>
-      <Header/>
+      <Header subIndex="프로필"/>
     </div>
   );
 }
