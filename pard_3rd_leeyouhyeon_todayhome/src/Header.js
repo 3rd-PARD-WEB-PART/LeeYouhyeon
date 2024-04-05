@@ -65,9 +65,32 @@ function Header(props){
             <button style={{color : subIndex == "나의 리뷰" ? "#35C5F0" : "#000"}}>나의 리뷰</button>
             <button style={{color : subIndex == "설정" ? "#35C5F0" : "#000"}}>설정</button>
         </SubIndex>
-        
-        <SubIndexDetail>
 
+        <SubIndexDetail>
+            { (subIndex == "프로필") ? 
+
+                ( <>
+                    <button>모두보기</button>
+                    <button>사진</button>
+                    <button>집들이</button>
+                    <button>노하우</button>
+                    <button>질문과답변</button>
+                    <button>스크랩북</button>
+                    <button>좋아요</button>
+                </>
+                )
+                :
+                ( <>
+                    <button>회원정보수정</button>
+                    <button>알림 설정</button>
+                    <button>사용자 숨기기 설정</button>
+                    <button>전문가 신청</button>
+                    <button>비밀번호 변경</button>
+                    <button>추천코드</button>
+                    </>
+                )
+                
+            }
         </SubIndexDetail>
 
         </Container>
@@ -246,6 +269,7 @@ const WrightingBtn =styled.button`
 const SubIndex =styled.div`
     display: flex;
     flex-direction: row;
+    width: 100%;
     height: 64px;
     border-bottom: 1px solid #EAEBEF;
     background: #FFF;
@@ -267,5 +291,33 @@ const SubIndex =styled.div`
         cursor: pointer;
     }
 `;
+
+const SubIndexDetail =styled.div`
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    height: 65px;
+    border-bottom: 1px solid #EAEBEF;
+    background: #FFF;
+    justify-content: center;
+    align-items: center;
+    gap: 36px;
+
+    > button{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border: none;
+        background-color: white;
+        color: #000;
+        text-align: center;
+        font-family: Inter;
+        font-size: 15px;
+        font-style: normal;
+        font-weight: 700;
+        line-height: normal;
+        cursor: pointer;
+    }
+`
 
 export default Header;
