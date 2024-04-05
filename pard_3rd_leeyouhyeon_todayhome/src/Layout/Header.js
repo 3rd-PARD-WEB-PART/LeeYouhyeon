@@ -200,7 +200,7 @@ const ProfileImgDiv =styled.div`
         border: none;
         padding: 0;
         border-radius: 50%;
-        background-color: #DBDBDB;
+        background-color: whitesmoke;
         background-image: url(${image});
         background-position: center;
         background-repeat: no-repeat;
