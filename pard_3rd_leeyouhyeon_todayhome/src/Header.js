@@ -9,9 +9,19 @@ import image from "./Assets/stand.png"
 import vector from "./Assets/Vector 4.png"
 
 function Header(){
+    const [focusBtn, setFocusBtn] =useState(false);
+
+    const handleInputFocus = () =>{
+        setFocusBtn(true);
+    }
+
+    const handleInputBlur = ()=>{
+        setFocusBtn(false)
+    }
 
     return(
         <Container>
+        <Header1>
             <HeaderMain>
                 <img src={Header_1} alt="오늘의 집 아이콘"></img>
             </HeaderMain>
@@ -20,9 +30,9 @@ function Header(){
                 <HeaderOption>쇼핑</HeaderOption>
                 <HeaderOption>인테리어/생활</HeaderOption>
             </CategoryDiv>
-            <SearchDiv >
+            <SearchDiv focusBtn={focusBtn} for="search" >
                 <img src={seach_icon} alt="검색 아이콘"></img>
-                <input type="text" placeholder="통합검색" ></input>
+                <input type="text" placeholder="통합검색" onFocus={handleInputFocus} onBlur={handleInputBlur} id="search"></input>
             </SearchDiv>
             <SmallIconDiv>
                 <button style={{marginRight: "21px"}}>
@@ -46,11 +56,19 @@ function Header(){
                 <img src={vector}></img>
             </WrightingBtn>
 
+        </Header1>
         </Container>
     );
 }
 
 const Container =styled.div`
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+`;  
+
+const Header1 =styled.div`
     display: flex;
     flex-direction: row;
     width: 100%;
@@ -104,18 +122,19 @@ const HeaderOption =styled.button`
     cursor: pointer;
 `
 
-const SearchDiv =styled.button`
+const SearchDiv =styled.label`
     display: flex;
     flex-direction: row;
-    width: 360px;
-    height: 43px;
+    width: 358px;
+    height: 41px;
     flex-shrink: 0;
     justify-content: center;
     align-items: center;
     background-color: white;
+    padding: 0;
 
     border-radius: 3px;
-    border: 1px solid #DADDE0;
+    border: ${(props) =>(props.focusBtn ? "1px solid skyblue" : "1px solid #DADDE0" )};
     margin-right: 29px;;
 
     > img {
@@ -182,7 +201,7 @@ const ProfileImgDiv =styled.div`
         background-image: url(${image});
         background-position: center;
         background-repeat: no-repeat;
-        background-size: 40px;
+        background-size: 43px;
         cursor: pointer;
     }
     
