@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import Header from "../../Header";
+import Header from "../../Layout/Header";
 import image from "../../Assets/stand.png"
 import scrap from "../../Assets/스크랩 아이콘(big).png"
 import like from "../../Assets/하트 아이콘.png"

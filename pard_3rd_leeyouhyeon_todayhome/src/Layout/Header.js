@@ -1,19 +1,17 @@
 import React, {useRef,useState} from "react";
 import styled from "styled-components";
-import Header_1 from "./Assets/Header_1.png"
-import seach_icon from "./Assets/검색 아이콘.png"
-import scrap from "./Assets/스크랩 아이콘.png"
-import alarm from "./Assets/알림 아이콘.png"
-import basket from "./Assets/장바구니 아이콘.png"
-import image from "./Assets/stand.png"
-import vector from "./Assets/Vector 4.png"
+import Header_1 from "../Assets/Header_1.png"
+import seach_icon from "../Assets/검색 아이콘.png"
+import scrap from "../Assets/스크랩 아이콘.png"
+import alarm from "../Assets/알림 아이콘.png"
+import basket from "../Assets/장바구니 아이콘.png"
+import image from "../Assets/stand.png"
+import vector from "../Assets/Vector 4.png"
+import SubIndex from "./SubIndex";
 
 function Header(props){
     const {subIndex} =props;
     const [focusBtn, setFocusBtn] =useState(false);
-    const [indexDetail, setIndexDetail] =useState(
-    subIndex ==="프로필" ? "모두보기" : "회원정보수정"
-    );
 
     const handleInputFocus = () =>{
         setFocusBtn(true);
@@ -21,14 +19,6 @@ function Header(props){
 
     const handleInputBlur = ()=>{
         setFocusBtn(false)
-    }
-
-    const onClickProfileAll = ()=>{
-        setIndexDetail("모두보기");
-    }
-
-    const onClickㄷEditModify = ()=>{
-        setIndexDetail("회원정보수정");
     }
 
     return(
@@ -70,39 +60,7 @@ function Header(props){
 
         </Header1>
 
-        <SubIndex>
-            <button style={{color : subIndex === "프로필" ? "#35C5F0" : "#000"}}>프로필</button>
-            <button style={{color : subIndex === "나의 쇼핑" ? "#35C5F0" : "#000"}}>나의 쇼핑</button>
-            <button style={{color : subIndex === "나의 리뷰" ? "#35C5F0" : "#000"}}>나의 리뷰</button>
-            <button style={{color : subIndex === "설정" ? "#35C5F0" : "#000"}}>설정</button>
-        </SubIndex>
-
-        <SubIndexDetail>
-            { (subIndex === "프로필") ? 
-
-                ( <>
-                    <button onClick={onClickProfileAll} style={{color : indexDetail === "모두보기" ? "#35C5F0" : "#000"}}>모두보기</button>
-                    <button>사진</button>
-                    <button>집들이</button>
-                    <button>노하우</button>
-                    <button>질문과답변</button>
-                    <button>스크랩북</button>
-                    <button>좋아요</button>
-                </>
-                )
-                :
-                ( <>
-                    <button onClick={onClickㄷEditModify} style={{color : indexDetail === "회원정보수정" ? "#35C5F0" : "#000"}}>회원정보수정</button>
-                    <button>알림 설정</button>
-                    <button>사용자 숨기기 설정</button>
-                    <button>전문가 신청</button>
-                    <button>비밀번호 변경</button>
-                    <button>추천코드</button>
-                    </>
-                )
-                
-            }
-        </SubIndexDetail>
+        <SubIndex subIndex={subIndex}/>
 
         </Container>
     );
@@ -277,59 +235,5 @@ const WrightingBtn =styled.button`
     gap: 8px;
     cursor: pointer;
 `;
-
-const SubIndex =styled.div`
-    display: flex;
-    flex-direction: row;
-    width: 100%;
-    height: 64px;
-    border-bottom: 1px solid #EAEBEF;
-    background: #FFF;
-    justify-content: center;
-    align-items: center;
-
-    gap: 51px;
-
-    > button {
-        border: none;
-        background-color: white;
-        color: #000;
-        text-align: center;
-        font-family: Inter;
-        font-size: 18px;
-        font-style: normal;
-        font-weight: 700;
-        line-height: normal;
-        cursor: pointer;
-    }
-`;
-
-const SubIndexDetail =styled.div`
-    display: flex;
-    flex-direction: row;
-    width: 100%;
-    height: 65px;
-    border-bottom: 1px solid #EAEBEF;
-    background: #FFF;
-    justify-content: center;
-    align-items: center;
-    gap: 36px;
-
-    > button{
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        border: none;
-        background-color: white;
-        color: #000;
-        text-align: center;
-        font-family: Inter;
-        font-size: 15px;
-        font-style: normal;
-        font-weight: 700;
-        line-height: normal;
-        cursor: pointer;
-    }
-`
 
 export default Header;
