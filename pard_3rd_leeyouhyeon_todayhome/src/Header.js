@@ -11,6 +11,7 @@ import vector from "./Assets/Vector 4.png"
 function Header(props){
     const {subIndex} =props;
     const [focusBtn, setFocusBtn] =useState(false);
+    const [indexDetail, setIndexDetail] =useState("모두보기");
 
     const handleInputFocus = () =>{
         setFocusBtn(true);
@@ -18,6 +19,14 @@ function Header(props){
 
     const handleInputBlur = ()=>{
         setFocusBtn(false)
+    }
+
+    const onClickProfileAll = ()=>{
+        setIndexDetail("모두보기");
+    }
+
+    const onClickㄷEditModify = ()=>{
+        setIndexDetail("회원정보수정");
     }
 
     return(
@@ -60,17 +69,17 @@ function Header(props){
         </Header1>
 
         <SubIndex>
-            <button style={{color : subIndex == "프로필" ? "#35C5F0" : "#000"}}>프로필</button>
-            <button style={{color : subIndex == "나의 쇼핑" ? "#35C5F0" : "#000"}}>나의 쇼핑</button>
-            <button style={{color : subIndex == "나의 리뷰" ? "#35C5F0" : "#000"}}>나의 리뷰</button>
-            <button style={{color : subIndex == "설정" ? "#35C5F0" : "#000"}}>설정</button>
+            <button style={{color : subIndex === "프로필" ? "#35C5F0" : "#000"}}>프로필</button>
+            <button style={{color : subIndex === "나의 쇼핑" ? "#35C5F0" : "#000"}}>나의 쇼핑</button>
+            <button style={{color : subIndex === "나의 리뷰" ? "#35C5F0" : "#000"}}>나의 리뷰</button>
+            <button style={{color : subIndex === "설정" ? "#35C5F0" : "#000"}}>설정</button>
         </SubIndex>
 
         <SubIndexDetail>
-            { (subIndex == "프로필") ? 
+            { (subIndex === "프로필") ? 
 
                 ( <>
-                    <button>모두보기</button>
+                    <button onClick={onClickProfileAll} style={{color : indexDetail === "모두보기" ? "#35C5F0" : "#000"}}>모두보기</button>
                     <button>사진</button>
                     <button>집들이</button>
                     <button>노하우</button>
@@ -81,7 +90,7 @@ function Header(props){
                 )
                 :
                 ( <>
-                    <button>회원정보수정</button>
+                    <button onClick={onClickㄷEditModify} style={{color : indexDetail === "회원정보수정" ? "#35C5F0" : "#000"}}>회원정보수정</button>
                     <button>알림 설정</button>
                     <button>사용자 숨기기 설정</button>
                     <button>전문가 신청</button>
