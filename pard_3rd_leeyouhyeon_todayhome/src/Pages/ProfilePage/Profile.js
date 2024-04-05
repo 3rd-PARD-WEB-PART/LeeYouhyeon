@@ -18,8 +18,8 @@ function Profile() {
   return (
     <Div>
       <Header subIndex="프로필"/>
-      <SeeAllContainer>
-        <ProfileDiv>
+      <SeeAllContainer> {/* 모두보기 */}
+        <ProfileDiv> 
           <ProfileImg>
             <img src={image}></img>
           </ProfileImg>
@@ -54,9 +54,24 @@ function Profile() {
               <Couunt>0</Couunt>
             </CouponIconDiv>
           </ProfileIconState>
-
         </ProfileDiv>
+        <SeeAllLeftSide>
+          <BoldTextDiv style={{marginTop: "50.8px"}}>
+            <BoldText>사진</BoldText>
+            <BoldTextCount>0</BoldTextCount>
+          </BoldTextDiv>
+          <DashedDiv>
+          + 첫 번째 사진을 올려보세요.
+          </DashedDiv>
+          <BoldTextDiv style={{marginTop: "61.77px"}}>
+            <BoldText>집들이</BoldText>
+            <BoldTextCount>0</BoldTextCount>
+          </BoldTextDiv>
+          <DashedDiv>
+          + 첫 번째 집들이를 올려보세요.
+          </DashedDiv>
 
+        </SeeAllLeftSide>
       </SeeAllContainer>
     </Div>
   );
@@ -242,6 +257,59 @@ const CouponIconDiv =styled(ScrapIconDiv)`
   width: 40px;
   margin-top: 31.38px;
 
+`;
+
+const SeeAllLeftSide =styled.div`
+  display: flex;
+  flex-direction: column;
+  width: 750px;
+  margin-left: 153px;
+`;
+
+const BoldTextDiv =styled.div`
+  display: flex;
+  flex-direction: row;
+  gap: 4px;
+  align-items: center;
+
+`;
+
+const BoldText =styled.div`
+  color: #000;
+  font-family: Inter;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+`;
+
+const BoldTextCount =styled.div`
+  color: #35C5F0;
+  font-family: Inter;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+`;
+
+const DashedDiv =styled.div`
+  display: flex;
+  width: 750px;
+  height: 187.282px;
+  flex-shrink: 0;
+  border: 1px dashed #757575;
+  justify-content: center;
+  align-items: center;
+
+  color: #757575;
+  text-align: center;
+  font-family: Inter;
+  font-size: 13px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+
+  margin-top: 20.92px;
 `;
 
 export default Profile;
