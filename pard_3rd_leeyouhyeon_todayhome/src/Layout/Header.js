@@ -8,6 +8,7 @@ import basket from "../Assets/장바구니 아이콘.png"
 import image from "../Assets/stand.png"
 import vector from "../Assets/Vector 4.png"
 import SubIndex from "./SubIndex";
+import {Outlet} from 'react-router-dom';
 
 function Header(){
     const [focusBtn, setFocusBtn] =useState(false);
@@ -21,6 +22,7 @@ function Header(){
     }
 
     return(
+    <div>
         <Container>
         <Header1>
             <HeaderMain>
@@ -58,8 +60,9 @@ function Header(){
             </WrightingBtn>
 
         </Header1>
-
         </Container>
+            <Outlet/>
+    </div>
     );
 }
 

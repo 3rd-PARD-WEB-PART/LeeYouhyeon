@@ -8,17 +8,22 @@ import coupon from "../../Assets/쿠폰 아이콘.png"
 import like_red from "../../Assets/하트 아이콘(red).png"
 import { useState } from "react";
 import SubIndex from "../../Layout/SubIndex";
+import {useNavigate} from "react-router-dom";
 
 function Profile() {
   const [isClicked, setIsClicked] =useState(false);
+  const navigate  =useNavigate();
 
   const onClickLikeIcon = ()=> {
     setIsClicked((isClicked) =>(!isClicked));
   }
 
+  const onClickEdit = () =>{
+    navigate("../edit");
+  }
+
   return (
     <Div>
-      <Header />
       <SubIndex subIndex="프로필"/>
       <SeeAllContainer> {/* 모두보기 */}
         <ProfileDiv> 
@@ -36,7 +41,7 @@ function Profile() {
               <FollowCount>0</FollowCount>
             </div>
           </FollowCountsDiv>
-          <EditBtn>설정</EditBtn>
+          <EditBtn onClick={onClickEdit}>설정</EditBtn>
           <ProfileIconState>
             <ScrapIconDiv style={{marginRight:"34px"}}>
               <img src={scrap} alt="스크랩 아이콘"></img>
@@ -184,6 +189,7 @@ const EditBtn =styled.button`
   justify-content: center;
   align-items: center;
   background-color: white;
+  cursor: pointer;
   
   color: #000;
   text-align: center;

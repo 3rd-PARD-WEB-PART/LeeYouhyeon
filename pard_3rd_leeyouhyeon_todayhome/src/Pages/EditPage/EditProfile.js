@@ -4,7 +4,7 @@ import Header from "../../Layout/Header";
 import SubIndex from "../../Layout/SubIndex";
 import radio from "../../Assets/activeRadioButton.png"
 import profile from "../../Assets/stand.png";
-
+import {useNavigate} from "react-router-dom";
 
 function EditProfile() {
   const [info, setInfo] =useState({
@@ -19,6 +19,7 @@ function EditProfile() {
     profileimage: profile,
     introduction: "안녕하세요. 다들 과제 화이팅하세요!"
   });
+  const navigate =useNavigate();
 
   const imageInput =useRef();
 
@@ -81,12 +82,12 @@ function EditProfile() {
   const submitInfo = (e) =>{
     e.preventDefault();
     console.log(info);
+    navigate("../profile");
   }
 
   return (
     <Div>
-      <Header/>
-      <SubIndex subIndex="설정"/> 
+      <SubIndex subIndex="설정"/>
       <InfoEditForm onSubmit={submitInfo}>
         <FistDiv>
           <div>회원정보수정</div>

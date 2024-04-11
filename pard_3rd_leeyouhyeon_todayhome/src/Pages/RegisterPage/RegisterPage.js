@@ -1,8 +1,10 @@
 import React, {useState, useEffect} from "react";
 import styled from "styled-components";
 import Logo from "../../Assets/Logo.png"
+import {useNavigate} from 'react-router-dom';
 
 function RegisterPage() {
+  const navigate =useNavigate();
   const [userdata, setUserdata] =useState({
     email: " ",
     password: " ",
@@ -10,6 +12,8 @@ function RegisterPage() {
     nickname: " ",
   });
   const [isSubmitokay, setIsSubmitokay] =useState(true);
+
+
 
   const handleEmail = (e) =>{
       setUserdata({...userdata, email: e.target.value});
@@ -49,6 +53,7 @@ function RegisterPage() {
     e.preventDefault();
 
     console.log(userdata, "입력성공");
+    navigate("./profile");
 
   }
 
