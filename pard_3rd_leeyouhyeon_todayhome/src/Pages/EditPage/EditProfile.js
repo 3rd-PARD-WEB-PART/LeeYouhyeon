@@ -98,31 +98,31 @@ function EditProfile() {
               이메일
               <div>* 필수항목</div>
             </GuideEmail>
-            <EmailInputDiv>
+            <InputDiv>
               <div>
                 <EmailInput type="text" value={info.email.fist} onChange={handleEmailfist}></EmailInput>
                 @
                 <EmailInput type="text" value={info.email.second} onChange={handleEmailSecond}></EmailInput>
               </div>
               이메일을 변경하시려면 운영자에게 이메일을 보내주세요.
-            </EmailInputDiv>
+            </InputDiv>
           </SmallEditDiv>
           <SmallEditDiv style={{marginTop:"40px"}}> 
             <GuideEmail>
               별명
               <div>* 필수항목</div>
             </GuideEmail>
-            <EmailInputDiv>
+            <InputDiv>
                 <NicknameInput type="text" value={info.nickname} onChange={handleNickname}></NicknameInput>
-            </EmailInputDiv>
+            </InputDiv>
           </SmallEditDiv>
           <SmallEditDiv style={{marginTop:"55px"}}> 
             <GuideText style={{marginTop:"11px"}}>
               홈페이지
             </GuideText>
-            <EmailInputDiv>
+            <InputDiv>
                 <NicknameInput type="text" value={info.homepage} onChange={handleHomepage}></NicknameInput>
-            </EmailInputDiv>
+            </InputDiv>
           </SmallEditDiv>
           <SmallEditDiv style={{marginTop:"49px", justifyContent: "start"}}> 
             <GuideText style={{marginRight:"72px"}}>
@@ -130,11 +130,11 @@ function EditProfile() {
             </GuideText>
             <SexRadioBtn>
               <label>
-                <input type="radio" value="남성" checked={info.sex ==="남성"} onChange={handleSex}></input>
+                <RadioInput type="radio" value="남성" checked={info.sex ==="남성"} onChange={handleSex}></RadioInput>
                 <div>남성</div>
               </label>
               <label>
-                <input type="radio" value="여성" checked={info.sex ==="여성"} onChange={handleSex}></input>
+                <RadioInput type="radio" value="여성" checked={info.sex ==="여성"} onChange={handleSex}></RadioInput>
                 <div>여성</div>
               </label>
             </SexRadioBtn>
@@ -143,9 +143,9 @@ function EditProfile() {
             <GuideText style={{marginTop:"11px"}}>
               생년월일
             </GuideText>
-            <EmailInputDiv>
+            <InputDiv>
                 <NicknameInput type="text" value={info.birth} onChange={handleBirth}></NicknameInput>
-            </EmailInputDiv>
+            </InputDiv>
           </SmallEditDiv>
           <SmallEditDiv style={{marginTop:"40px",justifyContent:"start"}}> 
             <GuideText style={{marginTop:"11px", width:"100px"}}>
@@ -162,11 +162,11 @@ function EditProfile() {
             <GuideText style={{marginTop:"11px"}}>
               한줄 소개
             </GuideText>
-            <EmailInputDiv>
+            <InputDiv>
               <div>
                 <NicknameInput type="text" value={info.introduction} onChange={handleIntro}></NicknameInput>
               </div>
-            </EmailInputDiv>
+            </InputDiv>
           </SmallEditDiv>
 
         </EditDiv>
@@ -267,7 +267,7 @@ const GuideEmail =styled(GuideText)`
   }
 `;
 
-const EmailInputDiv =styled.div`
+const InputDiv =styled.div`
   display: flex;
   flex-direction: column;
 
@@ -341,14 +341,25 @@ const SexRadioBtn =styled.div`
     font-weight: 400;
     line-height: normal;
 
-    > input{
-      margin: 0;
-      width: 22px;
-      height: 22px;
-      flex-shrink: 0;
-    
-    }
   }
+`;
+
+const RadioInput =styled.input`
+    margin: 0;
+    width: 22px;
+    height: 22px;
+    flex-shrink: 0;
+    appearance: none;
+    border: 1px solid #DBDBDB; // 체크되지 않았을 때의 테두리 색상
+    border-radius: 50%;
+    cursor:pointer;
+
+    &:checked {
+    border-radius: 50%;
+    background-color: white; // 체크 시 내부 원으로 표시될 색상
+    border: 6px solid #35C5F0; // 테두리가 아닌, 테두리와 원 사이의 색상
+  }
+
 `;
 
 const EditProfileImgDiv =styled.div`
