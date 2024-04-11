@@ -7,10 +7,9 @@ import EditProfile from "./Pages/EditPage/EditProfile";
 function App() {
   return (
     <div className="App">
-      {/* <RegisterPage/> */}
-      
+      <RegisterPage/>
       {/* <Profile/> */}
-      <EditProfile/>
+      {/* <EditProfile/> */}
     </div>
   );
 }

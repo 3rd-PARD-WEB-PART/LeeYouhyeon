@@ -1,30 +1,79 @@
-import React from "react";
+import React, {useState, useEffect} from "react";
 import styled from "styled-components";
 import Logo from "../../Assets/Logo.png"
 
 function RegisterPage() {
+  const [userdata, setUserdata] =useState({
+    email: " ",
+    password: " ",
+    passwordCheck: " ",
+    nickname: " ",
+  });
+  const [isSubmitokay, setIsSubmitokay] =useState(true);
+
+  const handleEmail = (e) =>{
+      setUserdata({...userdata, email: e.target.value});
+  };
+
+  const handlePassword = (e) =>{
+    setUserdata({...userdata, password: e.target.value});
+  };
+
+  const handlePasswordCheck = (e) =>{
+    setUserdata({...userdata, passwordCheck: e.target.value});
+  };
+
+  const handleNickname = (e) =>{
+    setUserdata({...userdata, nickname: e.target.value});
+  };
+
+  useEffect(() => {
+    if (
+      userdata.email.trim() !== "" &&
+      userdata.password.trim() !== "" &&
+      userdata.passwordCheck.trim() !== "" &&
+      userdata.nickname.trim() !== "" &&
+      /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/.test(userdata.password) &&
+      userdata.password === userdata.passwordCheck &&
+      userdata.nickname.length >= 2 &&
+      userdata.nickname.length <= 15
+    ) {
+      setIsSubmitokay(false); // Enable submit button if all conditions are met
+    } else {
+      setIsSubmitokay(true); // Disable submit button otherwise
+    }
+  }, [userdata]);
+  
+
+  const SubmitRegisterData = (e) =>{
+    e.preventDefault();
+
+    console.log(userdata, "입력성공");
+
+  }
+
   return (
     <BgDiv>
       <Div>
         <Top>
           <LogoImg src={Logo} alt="오늘의집 로고"></LogoImg>
         </Top>
-        <ContentFormDiv>
+        <ContentFormDiv onSubmit={SubmitRegisterData}>
           <RegisterDiv>회원가입</RegisterDiv>
           <SubDiv style={{marginBottom:"12px"}}>이메일</SubDiv>
-          <InputDiv type="text" placeholder="이메일"></InputDiv>
+          <InputDiv type="email" placeholder="이메일" onChange={handleEmail}></InputDiv>
 
           <SubDiv style={{marginBottom:"13px"}}>비밀번호</SubDiv>
           <SubDiv style={{marginBottom:"9px"}}>영문, 숫자를 포함한 8자 이상의 비밀번호를 입력해주세요.</SubDiv>
-          <InputDiv type="password" placeholder="비밀번호"></InputDiv>
+          <InputDiv type="password" placeholder="비밀번호" onChange={handlePassword}></InputDiv>
 
           <SubDiv style={{marginBottom:"12px"}}>비밀번호 확인</SubDiv>
-          <InputDiv type="password" placeholder="비밀번호 확인"></InputDiv>
+          <InputDiv type="password" placeholder="비밀번호 확인" onChange={handlePasswordCheck}></InputDiv>
 
           <SubDiv style={{marginBottom:"15px"}}>닉네임</SubDiv>
           <SubDiv style={{marginBottom:"8px"}}>다른 유저와 겹치지 않도록 입력해주세요. (2~15자)</SubDiv>
-          <InputDiv type="text" placeholder="별명 (2~15자)" style={{marginBottom:"34px"}}></InputDiv>
-          <RegisterBtn>회원가입하기</RegisterBtn>
+          <InputDiv type="text" placeholder="별명 (2~15자)"  onChange={handleNickname} style={{marginBottom:"34px"}}></InputDiv>
+          <RegisterBtn disabled={isSubmitokay}>회원가입하기</RegisterBtn>
 
           <LoginDiv>
             <div>이미 아이디가 있으신가요? </div>
