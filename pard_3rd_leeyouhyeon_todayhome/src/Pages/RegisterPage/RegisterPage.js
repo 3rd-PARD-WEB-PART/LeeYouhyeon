@@ -42,9 +42,9 @@ function RegisterPage() {
       userdata.nickname.length >= 2 &&
       userdata.nickname.length <= 15
     ) {
-      setIsSubmitokay(false); // Enable submit button if all conditions are met
+      setIsSubmitokay(false); 
     } else {
-      setIsSubmitokay(true); // Disable submit button otherwise
+      setIsSubmitokay(true); 
     }
   }, [userdata]);
   
