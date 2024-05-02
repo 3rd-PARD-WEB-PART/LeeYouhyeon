@@ -54,7 +54,7 @@ function Header(){
     
             </SmallIconDiv>
             <ProfileImgDiv> 
-                <img src={myinfo.profileImage}></img>
+                <img src={myinfo.profileImage} alt="프로필 이미지"></img>
             </ProfileImgDiv> 
             <WrightingBtn>
                 <div>글쓰기</div>
