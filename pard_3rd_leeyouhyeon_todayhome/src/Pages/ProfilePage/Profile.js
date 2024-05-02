@@ -277,6 +277,10 @@ const SeeAllLeftSide =styled.div`
   flex-direction: column;
   width: 750px;
   margin-left: 153px;
+  //labtop 적응형 
+  @media (max-width : 1024px ){
+    margin-left: 137px;
+  }
 `;
 
 const BoldTextDiv =styled.div`

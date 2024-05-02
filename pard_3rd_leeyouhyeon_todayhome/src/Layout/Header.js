@@ -5,12 +5,11 @@ import seach_icon from "../Assets/검색 아이콘.png"
 import scrap from "../Assets/스크랩 아이콘.png"
 import alarm from "../Assets/알림 아이콘.png"
 import basket from "../Assets/장바구니 아이콘.png"
-import image from "../Assets/stand.png"
 import vector from "../Assets/Vector 4.png"
-import SubIndex from "./SubIndex";
 import {Outlet} from 'react-router-dom';
 import { useRecoilValue } from "recoil";
 import { myInfo } from "../Atom";
+import MediaQuery from "react-responsive";
 
 function Header(){
     const myinfo =useRecoilValue(myInfo);
@@ -113,6 +112,7 @@ const CategoryDiv =styled.div`
     justify-content: center;
     align-items: center;
     gap: 30px;
+    
     margin-right: 118px;
 `;
 
@@ -134,6 +134,10 @@ const SearchDiv =styled.label`
     display: flex;
     flex-direction: row;
     width: 358px;
+    //labtop 반응형 
+    @media (max-width : 1024px ){
+        width: 190px;
+    }
     height: 41px;
     flex-shrink: 0;
     justify-content: center;
@@ -162,6 +166,10 @@ const SearchDiv =styled.label`
         font-weight: 400;
         line-height: normal;
         width: 290px;
+        //labtop 반응형 
+        @media (max-width : 1024px ){
+            width: 122px;
+        }
         padding-left: 10px;
         border: none;
         outline: none;
