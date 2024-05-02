@@ -5,19 +5,24 @@ import SubIndex from "../../Layout/SubIndex";
 import radio from "../../Assets/activeRadioButton.png"
 import profile from "../../Assets/stand.png";
 import {useNavigate} from "react-router-dom";
+import { useRecoilState } from "recoil";
+import { myInfo } from "../../Atom";
 
 function EditProfile() {
+  const [myinfo, setMyinfo] = useRecoilState(myInfo);
+  const emailSplit =myinfo.email.split('@');
+
   const [info, setInfo] =useState({
     email : {
-      fist : "webpart",
-      second: "pard.com"
+      fist : emailSplit[0],
+      second: emailSplit[1]
     },
-    nickname : "이유현",
-    homepage : "web-pard.com",
-    sex: 1,
-    birth: "2002.07.01",
-    profileimage: profile,
-    introduction: "안녕하세요. 다들 과제 화이팅하세요!"
+    nickname : myinfo.nickname,
+    homepage : myinfo.homepage,
+    gender: myinfo.gender,
+    birth: myinfo.date,
+    profileimage: myinfo.profileImage,
+    introduction: myinfo.introduce
   });
   const navigate =useNavigate();
 
@@ -53,9 +58,9 @@ function EditProfile() {
     homepage:e.target.value})
   }
 
-  const handleSex= (e) =>{
+  const handleGender= (e) =>{
     setInfo({...info,
-    sex:e.target.value})
+    gender:e.target.value})
   }
 
   const handleBirth = (e) =>{
@@ -131,11 +136,11 @@ function EditProfile() {
             </GuideText>
             <SexRadioBtn>
               <label>
-                <RadioInput type="radio" value={0} checked={info.sex ==="남성"} onChange={handleSex}></RadioInput>
+                <RadioInput type="radio" value={0} checked={info.gender ===0} onChange={handleGender}></RadioInput>
                 <div>남성</div>
               </label>
               <label>
-                <RadioInput type="radio" value={1} checked={info.sex ==="여성"} onChange={handleSex}></RadioInput>
+                <RadioInput type="radio" value={1} checked={info.gender ===1} onChange={handleGender}></RadioInput>
                 <div>여성</div>
               </label>
             </SexRadioBtn>

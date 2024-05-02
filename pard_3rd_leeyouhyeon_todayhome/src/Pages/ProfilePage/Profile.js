@@ -9,11 +9,11 @@ import like_red from "../../Assets/하트 아이콘(red).png"
 import { useState } from "react";
 import SubIndex from "../../Layout/SubIndex";
 import {useNavigate} from "react-router-dom";
-import {useRecoilState} from 'recoil';
+import { useRecoilValue} from 'recoil';
 import { myInfo } from "../../Atom";
 
 function Profile() {
-  const [myinfo, setMyinfo] =useRecoilState(myInfo);
+  const myinfo = useRecoilValue(myInfo);
 
   const [isClicked, setIsClicked] =useState(false);
   const navigate  =useNavigate();
@@ -32,9 +32,9 @@ function Profile() {
       <SeeAllContainer> {/* 모두보기 */}
         <ProfileDiv> 
           <ProfileImg>
-            <img src={image}></img>
+            <img src={myinfo.profileImage}></img>
           </ProfileImg>
-          <NameDiv>이유현</NameDiv>
+          <NameDiv>{myinfo.nickname}</NameDiv>
           <FollowCountsDiv>
             <div>
               <FollowText>팔로워</FollowText>
