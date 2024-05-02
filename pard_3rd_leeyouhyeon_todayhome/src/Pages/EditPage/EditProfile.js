@@ -86,7 +86,7 @@ function EditProfile() {
     introduction:e.target.value})
   }
 
-
+  //수정 버튼을 눌렀을 때 데이터가 atom에 저장됨 
   const submitInfo = (e) =>{
     e.preventDefault();
     console.log(info);
