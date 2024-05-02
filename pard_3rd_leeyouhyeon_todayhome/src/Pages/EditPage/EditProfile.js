@@ -14,7 +14,7 @@ function EditProfile() {
     },
     nickname : "이유현",
     homepage : "web-pard.com",
-    sex: "여성",
+    sex: 1,
     birth: "2002.07.01",
     profileimage: profile,
     introduction: "안녕하세요. 다들 과제 화이팅하세요!"
@@ -131,11 +131,11 @@ function EditProfile() {
             </GuideText>
             <SexRadioBtn>
               <label>
-                <RadioInput type="radio" value="남성" checked={info.sex ==="남성"} onChange={handleSex}></RadioInput>
+                <RadioInput type="radio" value={0} checked={info.sex ==="남성"} onChange={handleSex}></RadioInput>
                 <div>남성</div>
               </label>
               <label>
-                <RadioInput type="radio" value="여성" checked={info.sex ==="여성"} onChange={handleSex}></RadioInput>
+                <RadioInput type="radio" value={1} checked={info.sex ==="여성"} onChange={handleSex}></RadioInput>
                 <div>여성</div>
               </label>
             </SexRadioBtn>

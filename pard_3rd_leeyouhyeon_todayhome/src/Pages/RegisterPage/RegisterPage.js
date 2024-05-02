@@ -2,14 +2,18 @@ import React, {useState, useEffect} from "react";
 import styled from "styled-components";
 import Logo from "../../Assets/Logo.png"
 import {useNavigate} from 'react-router-dom';
+import  {useRecoilState} from 'recoil';
+import { myInfo } from "../../Atom";
 
 function RegisterPage() {
   const navigate =useNavigate();
+  const [myinfo, setMyinfo] =useRecoilState(myInfo);
+  
   const [userdata, setUserdata] =useState({
-    email: " ",
-    password: " ",
-    passwordCheck: " ",
-    nickname: " ",
+    email: "",
+    password: "",
+    passwordCheck: "", 
+    nickname: "",
   });
   const [isSubmitokay, setIsSubmitokay] =useState(true);
 
@@ -51,8 +55,16 @@ function RegisterPage() {
 
   const SubmitRegisterData = (e) =>{
     e.preventDefault();
+    console.log(userdata);
+    
+    setMyinfo((myinfo)=>({
+      ...myinfo,
+      email: userdata.email,
+      password: userdata.password,
+      nickname: userdata.nickname
+    }));
 
-    console.log(userdata, "입력성공");
+    console.log("입력성공");
     navigate("./profile");
 
   }

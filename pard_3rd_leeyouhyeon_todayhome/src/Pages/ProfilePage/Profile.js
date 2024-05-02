@@ -9,8 +9,14 @@ import like_red from "../../Assets/하트 아이콘(red).png"
 import { useState } from "react";
 import SubIndex from "../../Layout/SubIndex";
 import {useNavigate} from "react-router-dom";
+import {useRecoilState} from 'recoil';
+import { myInfo } from "../../Atom";
 
 function Profile() {
+  const [myinfo, setMyinfo] =useRecoilState(myInfo);
+
+  console.log(myinfo);
+
   const [isClicked, setIsClicked] =useState(false);
   const navigate  =useNavigate();
 
