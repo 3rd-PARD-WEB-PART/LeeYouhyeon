@@ -9,8 +9,12 @@ import image from "../Assets/stand.png"
 import vector from "../Assets/Vector 4.png"
 import SubIndex from "./SubIndex";
 import {Outlet} from 'react-router-dom';
+import { useRecoilValue } from "recoil";
+import { myInfo } from "../Atom";
 
 function Header(){
+    const myinfo =useRecoilValue(myInfo);
+
     const [focusBtn, setFocusBtn] =useState(false);
 
     const handleInputFocus = () =>{
@@ -49,10 +53,8 @@ function Header(){
                 </button>
     
             </SmallIconDiv>
-            <ProfileImgDiv>
-                <button>
-                    <div></div> 
-                </button>
+            <ProfileImgDiv> 
+                <img src={myinfo.profileImage}></img>
             </ProfileImgDiv> 
             <WrightingBtn>
                 <div>글쓰기</div>
@@ -196,18 +198,17 @@ const ProfileImgDiv =styled.div`
     flex-shrink: 0;
     margin-right: 40px;
 
-    > button {
+    > img {
         display: flex;
         width: 43px;
         height: 43px;
         border: none;
         padding: 0;
         border-radius: 50%;
-        background-color: whitesmoke;
-        background-image: url(${image});
+        /* background-image: url(${props => props.profileImage});
         background-position: center;
         background-repeat: no-repeat;
-        background-size: 43px;
+        background-size: 43px; */
         cursor: pointer;
     }
     

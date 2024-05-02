@@ -9,7 +9,7 @@ export const myInfo = atom({
         homepage: "", 
         gender: 0, 
         date: "", 
-        profileImage: "./Assets/프로필 이미지.png", 
+        profileImage: "/프로필 이미지.png", 
         introduce: ""
     }
 });
