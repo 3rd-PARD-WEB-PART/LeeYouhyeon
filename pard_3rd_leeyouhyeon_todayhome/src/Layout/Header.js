@@ -33,9 +33,9 @@ function Header(){
                 <HeaderOption>쇼핑</HeaderOption>
                 <HeaderOption>인테리어/생활</HeaderOption>
             </CategoryDiv>
-            <SearchDiv focusBtn={focusBtn} for="search" >
+            <SearchDiv focusBtn={focusBtn}>
                 <img src={seach_icon} alt="검색 아이콘"></img>
-                <input type="text" placeholder="통합검색" onFocus={handleInputFocus} onBlur={handleInputBlur} id="search"></input>
+                <input type="text" placeholder="통합검색" onFocus={handleInputFocus} onBlur={handleInputBlur}></input>
             </SearchDiv>
             <SmallIconDiv>
                 <button style={{marginRight: "21px"}}>
