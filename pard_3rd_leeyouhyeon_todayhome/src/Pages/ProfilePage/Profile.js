@@ -14,6 +14,7 @@ import { myInfo } from "../../Atom";
 
 function Profile() {
   const myinfo = useRecoilValue(myInfo);
+  console.log(myinfo);
 
   const [isClicked, setIsClicked] =useState(false);
   const navigate  =useNavigate();

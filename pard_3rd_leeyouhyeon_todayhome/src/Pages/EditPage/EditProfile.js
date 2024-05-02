@@ -24,6 +24,7 @@ function EditProfile() {
     profileimage: myinfo.profileImage,
     introduction: myinfo.introduce
   });
+
   const navigate =useNavigate();
 
   const imageInput =useRef();
@@ -32,6 +33,7 @@ function EditProfile() {
     imageInput.current.click();
   }
 
+  // 이벤트 핸들러
   const handleEmailfist = (e) =>{
     setInfo({...info,
     email :{
@@ -84,9 +86,22 @@ function EditProfile() {
     introduction:e.target.value})
   }
 
+
   const submitInfo = (e) =>{
     e.preventDefault();
     console.log(info);
+
+    setMyinfo((myinfo)=>({
+      ...myinfo,
+      email: info.email.fist +'@'+info.email.second ,
+      nickname: info.nickname,
+      homepage : info.homepage,
+      gender: info.gender,
+      date: info.birth,
+      profileImage: info.profileimage,
+      introduce: info.introduction
+    }));
+
     navigate("../profile");
   }
 
@@ -136,11 +151,11 @@ function EditProfile() {
             </GuideText>
             <SexRadioBtn>
               <label>
-                <RadioInput type="radio" value={0} checked={info.gender ===0} onChange={handleGender}></RadioInput>
+                <RadioInput type="radio" value={0} checked={info.gender ==0} onChange={handleGender}></RadioInput>
                 <div>남성</div>
               </label>
               <label>
-                <RadioInput type="radio" value={1} checked={info.gender ===1} onChange={handleGender}></RadioInput>
+                <RadioInput type="radio" value={1} checked={info.gender ==1} onChange={handleGender}></RadioInput>
                 <div>여성</div>
               </label>
             </SexRadioBtn>
