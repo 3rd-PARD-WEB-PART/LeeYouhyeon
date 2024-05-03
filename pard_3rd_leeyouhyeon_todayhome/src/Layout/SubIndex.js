@@ -1,4 +1,5 @@
 import React, {useState} from "react";
+import MediaQuery from "react-responsive";
 import styled from "styled-components";
 
 function SubIndex(props){
@@ -22,7 +23,9 @@ function SubIndex(props){
         <SubIndexDiv>
             <button style={{color : subIndex === "프로필" ? "#35C5F0" : "#000"}}>프로필</button>
             <button style={{color : subIndex === "나의 쇼핑" ? "#35C5F0" : "#000"}}>나의 쇼핑</button>
-            <button style={{color : subIndex === "나의 리뷰" ? "#35C5F0" : "#000"}}>나의 리뷰</button>
+            <MediaQuery  minWidth={768} >
+                <button style={{color : subIndex === "나의 리뷰" ? "#35C5F0" : "#000"}}>나의 리뷰</button>
+            </MediaQuery>
             <button style={{color : subIndex === "설정" ? "#35C5F0" : "#000"}}>설정</button>
         </SubIndexDiv>
 
@@ -68,6 +71,11 @@ const SubIndexDiv =styled.div`
     align-items: center;
 
     gap: 51px;
+    /* mobile */
+    @media (max-width:767px){
+        gap: 52px;
+        height: 54px;
+    }
 
     > button {
         border: none;
@@ -76,6 +84,10 @@ const SubIndexDiv =styled.div`
         text-align: center;
         font-family: Inter;
         font-size: 18px;
+        /* mobile */
+        @media (max-width:767px){
+            font-size: 16px;
+        }
         font-style: normal;
         font-weight: 700;
         line-height: normal;
@@ -93,6 +105,11 @@ const SubIndexDetail =styled.div`
     justify-content: center;
     align-items: center;
     gap: 36px;
+    /* mobile */
+    @media (max-width:767px){
+        gap: 21px;
+        height: 53px;
+    }
 
     > button{
         display: flex;
@@ -104,6 +121,10 @@ const SubIndexDetail =styled.div`
         text-align: center;
         font-family: Inter;
         font-size: 15px;
+        /* mobile */
+        @media (max-width:767px){
+            font-size: 13px;
+        }
         font-style: normal;
         font-weight: 700;
         line-height: normal;
