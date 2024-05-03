@@ -277,7 +277,7 @@ const SeeAllLeftSide =styled.div`
   flex-direction: column;
   width: 750px;
   margin-left: 153px;
-  //labtop 적응형 
+  //labtop 반응형 
   @media (max-width : 1024px ){
     margin-left: 137px;
   }

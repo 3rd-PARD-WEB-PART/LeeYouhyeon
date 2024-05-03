@@ -36,10 +36,18 @@ function Header(){
                 <HeaderOption>쇼핑</HeaderOption>
                 <HeaderOption>인테리어/생활</HeaderOption>
             </CategoryDiv>
-            <SearchDiv focusBtn={focusBtn}>
-                <img src={seach_icon} alt="검색 아이콘"></img>
-                <input type="text" placeholder="통합검색" onFocus={handleInputFocus} onBlur={handleInputBlur}></input>
-            </SearchDiv>
+            <MediaQuery minWidth={1024}>
+                <SearchDiv focusBtn={focusBtn}>
+                    <img src={seach_icon} alt="검색 아이콘"></img>
+                    <input type="text" placeholder="통합검색" onFocus={handleInputFocus} onBlur={handleInputBlur}></input>
+                </SearchDiv>
+            </MediaQuery>
+            <MediaQuery maxWidth={768}>
+                <SearchDiv focusBtn={focusBtn}>
+                    <img src={seach_icon} alt="검색 아이콘"></img>
+                    <input type="text" placeholder="통합검색" onFocus={handleInputFocus} onBlur={handleInputBlur}></input>
+                </SearchDiv>
+            </MediaQuery>
             <SmallIconDiv>
                 <button style={{marginRight: "21px"}}>
                     <img src={scrap} alt="스크랩 아이콘" ></img>
@@ -57,7 +65,9 @@ function Header(){
             </ProfileImgDiv> 
             <WrightingBtn>
                 <div>글쓰기</div>
-                <img src={vector}></img>
+                <MediaQuery minWidth={1024}>
+                    <img src={vector}></img>
+                </MediaQuery>
             </WrightingBtn>
 
         </Header1>
@@ -96,6 +106,10 @@ const HeaderMain =styled.button`
     height: 41.488px;
     flex-shrink: 0;
     margin-right: 50px;
+    //tablet 반응형
+    @media (max-width : 1023px){
+        margin-right: 37px;
+    }
     justify-content: center;
     align-items: center;
     cursor: pointer;
@@ -134,10 +148,10 @@ const SearchDiv =styled.label`
     display: flex;
     flex-direction: row;
     width: 358px;
-    //labtop 반응형 
+    /* //labtop 반응형 
     @media (max-width : 1024px ){
         width: 190px;
-    }
+    } */
     height: 41px;
     flex-shrink: 0;
     justify-content: center;
@@ -166,10 +180,10 @@ const SearchDiv =styled.label`
         font-weight: 400;
         line-height: normal;
         width: 290px;
-        //labtop 반응형 
+        /* //labtop 반응형 
         @media (max-width : 1024px ){
             width: 122px;
-        }
+        } */
         padding-left: 10px;
         border: none;
         outline: none;
@@ -243,6 +257,10 @@ const WrightingBtn =styled.button`
     line-height: normal;
     gap: 8px;
     cursor: pointer;
+
+    @media (max-width: 1023px){
+        width: 69px;
+    }
 `;
 
 export default Header;
