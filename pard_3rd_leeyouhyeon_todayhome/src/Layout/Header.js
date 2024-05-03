@@ -10,6 +10,7 @@ import {Outlet} from 'react-router-dom';
 import { useRecoilValue } from "recoil";
 import { myInfo } from "../Atom";
 import MediaQuery from "react-responsive";
+import search_black from "../Assets/search_black.png"
 
 function Header(){
     const myinfo =useRecoilValue(myInfo);
@@ -36,17 +37,17 @@ function Header(){
                 <HeaderOption>쇼핑</HeaderOption>
                 <HeaderOption>인테리어/생활</HeaderOption>
             </CategoryDiv>
+            {/* labtop */}
             <MediaQuery minWidth={1024}>
                 <SearchDiv focusBtn={focusBtn}>
                     <img src={seach_icon} alt="검색 아이콘"></img>
                     <input type="text" placeholder="통합검색" onFocus={handleInputFocus} onBlur={handleInputBlur}></input>
                 </SearchDiv>
             </MediaQuery>
-            <MediaQuery maxWidth={768}>
-                <SearchDiv focusBtn={focusBtn}>
-                    <img src={seach_icon} alt="검색 아이콘"></img>
-                    <input type="text" placeholder="통합검색" onFocus={handleInputFocus} onBlur={handleInputBlur}></input>
-                </SearchDiv>
+            {/* tablet */}
+            <MediaQuery minWidth={768} maxWidth={1023}>
+                    <img src={search_black} alt="검색 아이콘"
+                    style={{marginRight:"21px", cursor:"pointer"}}></img>
             </MediaQuery>
             <SmallIconDiv>
                 <button style={{marginRight: "21px"}}>

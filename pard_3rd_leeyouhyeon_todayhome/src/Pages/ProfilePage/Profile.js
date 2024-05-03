@@ -67,6 +67,7 @@ function Profile() {
             </CouponIconDiv>
           </ProfileIconState>
         </ProfileDiv>
+        
         <SeeAllLeftSide>
           <BoldTextDiv style={{marginTop: "50.8px"}}>
             <BoldText>사진</BoldText>
