@@ -10,7 +10,8 @@ import {Outlet} from 'react-router-dom';
 import { useRecoilValue } from "recoil";
 import { myInfo } from "../Atom";
 import MediaQuery from "react-responsive";
-import search_black from "../Assets/search_black.png"
+import search_black from "../Assets/search_black.png";
+import bar from "../Assets/bar.png";
 
 function Header(){
     const myinfo =useRecoilValue(myInfo);
@@ -28,6 +29,7 @@ function Header(){
     return(
     <div>
         <Container>
+        <MediaQuery minWidth={768}>
         <Header1>
             <HeaderMain>
                 <img src={Header_1} alt="오늘의 집 아이콘"></img>
@@ -70,8 +72,22 @@ function Header(){
                     <img src={vector}></img>
                 </MediaQuery>
             </WrightingBtn>
-
         </Header1>
+        </MediaQuery>
+        {/* mobile */}
+        <MediaQuery maxWidth={767}>
+            <MobileDiv>
+                <img src={bar} alt="더보기 아이콘" style={{marginLeft:"17px"}}></img>
+                <HeaderMain style={{marginRight:"0px", width:"78px", height:"38px"}}>
+                    <img src={Header_1} alt="오늘의 집 아이콘"></img>
+                </HeaderMain>
+                <MobileIconDiv style={{marginRight:"16px"}}>
+                    <img src={search_black} alt="검색 아이콘"
+                    style={{marginRight:"21px", cursor:"pointer"}}></img>
+                    <img src={basket} alt="장바구니 아이콘"/>
+                </MobileIconDiv>
+            </MobileDiv>
+        </MediaQuery>
         </Container>
             <Outlet/>
     </div>
@@ -264,4 +280,21 @@ const WrightingBtn =styled.button`
     }
 `;
 
+const MobileDiv =styled.div`
+    display: flex;
+    flex-direction: row;
+    width: 100vw;
+    height: 60px;
+    flex-shrink: 0;
+    align-items: center;
+    justify-content: space-between;
+    border: 1px solid #EAEBEF;
+
+`; 
+
+const MobileIconDiv =styled.div`
+    display: flex;
+    width: 61px;
+    justify-content: space-between;
+`;
 export default Header;
