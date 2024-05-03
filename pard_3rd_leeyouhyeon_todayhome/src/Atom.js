@@ -1,13 +1,6 @@
 import {atom} from 'recoil';
-import {recoilPersist} from 'recoil-persist';
 
-//recoil을 사용중일 때 세션스토리지에 데이터를 담음
-// npm install recoil recoil-persist
-const {persistAtom} =recoilPersist({
-    key: "infoData", //고유한 키 값
-    Storage: sessionStorage, //스토리지 형태: 세션, 로컬 
-});
-
+// [세션스토리지 참고 자료] : https://lasbe.tistory.com/158
 export const myInfo = atom({
     key : 'myInfo',
     default:
@@ -21,5 +14,25 @@ export const myInfo = atom({
         profileImage: "/프로필 이미지.png", 
         introduce: ""
     },
-    effects_UNSTABLE: [persistAtom] //해당 아톰이 변경될 때 마다 설정한 스토리지에 저장됨. 새로고침해도 atom 값 유지
+    //atom의 Effects는 부수효과를 관리하고 recoil의 atom을 초기화하거나 동기화할 때 사용하는 API
+    //setSelf를 통해 atom의 값을 설정 : 세션스토리지 값을 가져와 아톰에 저장
+    //onSet을 통해 atom의 변화를 감지해 torage에 데이터를 저장 
+
+    //데이터를 저장할 때는 문자열만 저장가능 
+    //JSON.stringify -> json 형태를 문자열로 변환
+    //JSON.parse -> 문자열을 json 형태로 변환 
+    effects: [
+        ({setSelf, onSet}) => {
+            const saveSessionData =sessionStorage.getItem("myinfoData");
+            if(saveSessionData){
+                setSelf(JSON.parse(saveSessionData));
+            }
+
+            onSet((newValue, _, isReset) =>{
+                isReset
+                ? sessionStorage.removeItem("myinfoData")
+                : sessionStorage.setItem("myinfoData", JSON.stringify(newValue));
+            })
+        }
+    ]
 });
