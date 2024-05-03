@@ -36,7 +36,7 @@ function Profile() {
           <MediaQuery minWidth={1024}>
           <ProfileDiv> 
             <ProfileImg>
-              <img src={myinfo.profileImage}></img>
+              <img src={myinfo.profileImage} alt="프로필 이미지"></img>
             </ProfileImg>
             <NameDiv>{myinfo.nickname}</NameDiv>
             <FollowCountsDiv>
@@ -76,7 +76,7 @@ function Profile() {
           <TabletDiv>
             <TopDiv>
               <ProfileImg>
-                <img src={myinfo.profileImage}></img>
+                <img src={myinfo.profileImage} alt="프로필 이미지"></img> 
               </ProfileImg>
               <ProfileInfoDiv>
                 <NameDiv style={{marginTop:"0px"}}>{myinfo.nickname}</NameDiv>
@@ -116,9 +116,56 @@ function Profile() {
             </BottonDiv>
           </TabletDiv>
         </MediaQuery>
+
+        {/* mobile */}
+        <MediaQuery maxWidth={767}>
+          <MobileProfileDiv>
+            <MobileUpDiv>
+              <ProfileImg>
+                <img src={myinfo.profileImage} alt="프로필 이미지"></img>
+              </ProfileImg>
+              <ProfileInfoDiv>
+                  <NameDiv style={{marginTop:"34px", fontSize:"20px"}}>{myinfo.nickname}</NameDiv>
+                  <FollowCountsDiv style={{marginTop:"5px"}}>
+                    <div>
+                      <FollowText>팔로워</FollowText>
+                      <FollowCount>0</FollowCount>
+                    </div>
+                    <div>
+                      <FollowText>팔로잉</FollowText>
+                      <FollowCount>0</FollowCount>
+                    </div>
+                  </FollowCountsDiv>
+                  <EditBtn onClick={onClickEdit} style={{marginTop:"9px"}}>설정</EditBtn>
+                </ProfileInfoDiv>
+            </MobileUpDiv>
+            <MobileDownDiv>
+              <ProfileIconState>
+                <ScrapIconDiv style={{marginRight:"213px"}}>
+                  <img src={scrap} alt="스크랩 아이콘"></img>
+                  <SmallText>스크랩북</SmallText>
+                  <Couunt>0</Couunt>
+                </ScrapIconDiv>
+                <LikeIconDiv style={{marginRight:"219px"}}>
+                  <button onClick={onClickLikeIcon}>
+                    <img src={isClicked ? like_red :like} alt="하트 아이콘"></img>
+                  </button>
+                  <SmallText>좋아요</SmallText>
+                  <Couunt>{isClicked? 1 : 0}</Couunt>
+                </LikeIconDiv>
+                <CouponIconDiv>
+                  <img src={coupon} alt="쿠폰 아이콘"></img>
+                  <SmallText>내 쿠폰</SmallText>
+                  <Couunt>0</Couunt>
+                </CouponIconDiv>
+              </ProfileIconState>
+            </MobileDownDiv>
+          </MobileProfileDiv>
+        </MediaQuery>
         
+
         <SeeAllLeftSide>
-          <BoldTextDiv style={{marginTop: "50.8px"}}>
+          <BoldTextDiv>
             <BoldText>사진</BoldText>
             <BoldTextCount>0</BoldTextCount>
           </BoldTextDiv>
@@ -189,11 +236,23 @@ const ProfileImg =styled.div`
   @media (max-width : 1023px){
     margin-top: 0px;
   }
+  //mobile
+  @media (max-width:767px){
+    margin-top: 33px;
+    height: 88.344px;
+    justify-content: end;
+  }
+  
 
   > img {
     width: 130px;
     height: 129.504px;
     border-radius: 50%;
+      //mobile
+    @media (max-width:767px){
+      width: 88.344px;
+      height: 88.344px;
+  }
   }
   
 `;
@@ -287,6 +346,11 @@ const ProfileIconState =styled.div`
     margin-top: 0;
     width: 100%;
   }
+  //mobile
+  @media (max-width:767px){
+    /* height: 54px; */
+    margin-top: 51px;
+  }
 `;
 
 const ScrapIconDiv =styled.div`
@@ -301,6 +365,11 @@ const ScrapIconDiv =styled.div`
   @media (max-width : 1023px){
     margin-top: 0;
   }
+  //mobile
+  @media (max-width:767px){
+    width: 56px;
+    justify-content: start;
+  }
 `;
 
 const SmallText =styled.div`
@@ -308,6 +377,10 @@ const SmallText =styled.div`
   text-align: center;
   font-family: Inter;
   font-size: 13px;
+    //mobile
+  @media (max-width:767px){
+    font-size: 15px;
+  }
   font-style: normal;
   font-weight: 400;
   line-height: normal;
@@ -330,6 +403,10 @@ const Couunt =styled.div`
 
 const LikeIconDiv =styled(ScrapIconDiv)`
   width: 36px;
+    //mobile
+  @media (max-width:767px){
+    width: 42px;
+  }
 
   > button{
     border: 0;
@@ -347,6 +424,10 @@ const CouponIconDiv =styled(ScrapIconDiv)`
     //tablet 반응형
   @media (max-width : 1023px){
     margin-top: 0;
+  }
+    //mobile
+  @media (max-width:767px){
+    width: 46px;
   }
 
 `;
@@ -372,6 +453,11 @@ const BoldTextDiv =styled.div`
   flex-direction: row;
   gap: 4px;
   align-items: center;
+  margin-top: 50.8px;
+  /* mobile */
+  @media (max-width:767px){
+      margin-top:72px ;
+  }
 
 `;
 
@@ -441,6 +527,26 @@ const ProfileInfoDiv =styled.div`
   justify-content: center;
   width: 130px;
   margin-left: 20px;
+`;
+
+const MobileProfileDiv =styled.div`
+  display: flex;
+  width: 813px;
+  height: 270px;
+  flex-direction: column;
+  border-bottom: 1px solid #EAEBEF;
+`;
+
+const MobileUpDiv =styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: start;
+  width: 100%;
+`;
+
+const MobileDownDiv =styled.div`
+  display: flex;
+  /* margin-top: 51px; */
 `;
 
 export default Profile;
