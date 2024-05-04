@@ -159,6 +159,8 @@ const HeaderOption =styled.button`
     border: none;
     background-color: white;
     cursor: pointer;
+    overflow: hidden;
+    white-space: nowrap;
 `
 
 const SearchDiv =styled.label`
