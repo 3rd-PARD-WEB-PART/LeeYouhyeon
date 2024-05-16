@@ -1,4 +1,4 @@
-import React, { useState , useRef} from "react";
+import React, { useState , useRef, useEffect} from "react";
 import styled from "styled-components";
 import Header from "../../Layout/Header";
 import SubIndex from "../../Layout/SubIndex";
@@ -7,8 +7,10 @@ import profile from "../../Assets/stand.png";
 import {useNavigate} from "react-router-dom";
 import { useRecoilState } from "recoil";
 import { myInfo } from "../../Atom";
+import { getMemberAPI, patchMemberAPI } from "../../API/AxiosAPI";
 
 function EditProfile() {
+  const id =1;
   const [myinfo, setMyinfo] = useRecoilState(myInfo);
   const emailSplit =myinfo.email.split('@');
 
@@ -24,6 +26,48 @@ function EditProfile() {
     profileimage: myinfo.profileImage,
     introduction: myinfo.introduce
   });
+
+  //서버에서 데이터를 가져옴
+  const getMemberData = async(id) =>{
+    try{
+      const response = await getMemberAPI(id);
+      // console.log(response.data);
+      const image = response.data.profileImage;
+
+      //리코일에 설정
+      setMyinfo((myinfo)=>({
+        ...myinfo,
+        id: response.data.id,
+        email: response.data.email,
+        nickname: response.data.nickname,
+        homepage : response.data.homepage,
+        gender: response.data.gender,
+        date: response.data.date,
+        password: response.data.password,
+        profileImage: (image ===""? "/프로필 이미지.png" : image ),
+        introduce: response.data.introduce
+      }));
+      console.log(myinfo);
+    }
+    catch(error){
+      console.error(error);
+    }
+  }
+
+  //수정한 데이터를 서버에 보냄
+  const patchMemeberData = async(id, data)=>{
+    try{
+      const response = await patchMemberAPI(id, data);
+    }
+    catch(error){
+      console.error(error);
+    }
+  }
+
+  useEffect(()=>{
+    getMemberData(id);
+    console.log(myinfo);
+  }, [])
 
   const navigate =useNavigate();
 
@@ -87,20 +131,23 @@ function EditProfile() {
   }
 
   //수정 버튼을 눌렀을 때 데이터가 atom에 저장됨 
-  const submitInfo = (e) =>{
+  const submitInfo = async(e) =>{
     e.preventDefault();
     console.log(info);
 
-    setMyinfo((myinfo)=>({
-      ...myinfo,
-      email: info.email.fist +'@'+info.email.second ,
+    const data = {
+      email: info.email.fist +"@"+info.email.second,
       nickname: info.nickname,
       homepage : info.homepage,
       gender: info.gender,
       date: info.birth,
       profileImage: info.profileimage,
       introduce: info.introduction
-    }));
+    }
+
+    console.log("클릭 데이터",data);
+    await patchMemeberData(id, data);
+    getMemberData(id);
 
     navigate("../profile");
   }
