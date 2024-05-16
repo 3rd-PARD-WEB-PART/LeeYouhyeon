@@ -47,7 +47,7 @@ function EditProfile() {
         profileImage: (image ===""? "/프로필 이미지.png" : image ),
         introduce: response.data.introduce
       }));
-      console.log(myinfo);
+
     }
     catch(error){
       console.error(error);
@@ -66,6 +66,10 @@ function EditProfile() {
 
   useEffect(()=>{
     getMemberData(id);
+    if(info.nickname===""){
+      window.location.reload();
+    };
+
     console.log(myinfo);
   }, [])
 
