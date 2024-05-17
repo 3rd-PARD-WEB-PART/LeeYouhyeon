@@ -11,9 +11,11 @@ import { getMemberAPI, patchMemberAPI } from "../../API/AxiosAPI";
 
 function EditProfile() {
   const id =1;
+  //리코일
   const [myinfo, setMyinfo] = useRecoilState(myInfo);
   const emailSplit =myinfo.email.split('@');
 
+  //인풋값 입력 및 변경을 위함
   const [info, setInfo] =useState({
     email : {
       first : emailSplit[0],
@@ -22,9 +24,9 @@ function EditProfile() {
     nickname : myinfo.nickname,
     homepage : myinfo.homepage,
     gender: myinfo.gender,
-    birth: myinfo.date,
+    date: myinfo.date,
     profileimage: myinfo.profileImage,
-    introduction: myinfo.introduce
+    introduce: myinfo.introduce
   });
 
   //서버에서 데이터를 가져옴
@@ -81,47 +83,21 @@ function EditProfile() {
     imageInput.current.click();
   }
 
+  //이벤트 핸들러 -파일 제외
   const handleInputall = (e) =>{
     console.log(e.target.name);
-  }
-
-  // 이벤트 핸들러
-  const handleEmailfirst = (e) =>{
-    setInfo({...info,
-    email :{
-      ...info.email,
-      first: e.target.value
-    }})
-  }
-
-  const handleEmailSecond = (e) =>{
+    e.target.name ==="first" || e.target.name ==="second" ?  
     setInfo({...info,
       email :{
         ...info.email,
-        second: e.target.value
+        [e.target.name]: e.target.value
       }})
-  }
-
-  const handleNickname = (e) =>{
+    :
     setInfo({...info,
-    nickname: e.target.value})
+      [e.target.name]: e.target.value})
   }
 
-  const handleHomepage = (e) =>{
-    setInfo({...info,
-    homepage:e.target.value})
-  }
-
-  const handleGender= (e) =>{
-    setInfo({...info,
-    gender:e.target.value})
-  }
-
-  const handleBirth = (e) =>{
-    setInfo({...info,
-    birth:e.target.value})
-  }
-
+  //이벤트 핸들러 파일 업로드
   const handleProfileimg = (e) =>{
     const file = e.target.files[0];
     if (file){
@@ -133,27 +109,24 @@ function EditProfile() {
     }
   }
 
-  const handleIntro = (e) =>{
-    setInfo({...info,
-    introduction:e.target.value})
-  }
-
   //수정 버튼을 눌렀을 때 데이터가 atom에 저장됨 
   const submitInfo = async(e) =>{
     e.preventDefault();
     console.log(info);
 
+    //수정할 데이터
     const data = {
       email: info.email.first +"@"+info.email.second,
       nickname: info.nickname,
       homepage : info.homepage,
       gender: info.gender,
-      date: info.birth,
+      date: info.date,
       profileImage: info.profileimage,
-      introduce: info.introduction
+      introduce: info.introduce
     }
 
     console.log("클릭 데이터",data);
+    //데이터를 수정한 "후" 수정한 데이터를 서버에서 가져오도록 함
     await patchMemeberData(id, data);
     getMemberData(id);
 
@@ -176,9 +149,9 @@ function EditProfile() {
             </GuideEmail>
             <InputDiv>
               <div>
-                <EmailInput type="text" name="first" value={info.email.first} onChange={handleEmailfirst}></EmailInput>
+                <EmailInput type="text" name="first" value={info.email.first} onChange={handleInputall}></EmailInput>
                 @
-                <EmailInput type="text" name="second" value={info.email.second} onChange={handleEmailSecond}></EmailInput>
+                <EmailInput type="text" name="second" value={info.email.second} onChange={handleInputall}></EmailInput>
               </div>
               이메일을 변경하시려면 운영자에게 이메일을 보내주세요.
             </InputDiv>
@@ -189,7 +162,7 @@ function EditProfile() {
               <div>* 필수항목</div>
             </GuideEmail>
             <InputDiv>
-                <NicknameInput type="text"  name="nickname" value={info.nickname} onChange={handleNickname}></NicknameInput>
+                <NicknameInput type="text"  name="nickname" value={info.nickname} onChange={handleInputall}></NicknameInput>
             </InputDiv>
           </SmallEditDiv>
           <SmallEditDiv style={{marginTop:"55px"}}> 
@@ -197,7 +170,7 @@ function EditProfile() {
               홈페이지
             </GuideText>
             <InputDiv>
-                <NicknameInput type="text" name="homepage"  value={info.homepage} onChange={handleHomepage}></NicknameInput>
+                <NicknameInput type="text" name="homepage"  value={info.homepage} onChange={handleInputall}></NicknameInput>
             </InputDiv>
           </SmallEditDiv>
           <SmallEditDiv style={{marginTop:"49px", justifyContent: "start"}}> 
@@ -206,11 +179,11 @@ function EditProfile() {
             </GuideText>
             <SexRadioBtn>
               <label>
-                <RadioInput type="radio" name="gender" value={0} checked={info.gender ==0} onChange={handleGender}></RadioInput>
+                <RadioInput type="radio" name="gender" value={1} checked={info.gender ==1} onChange={handleInputall}></RadioInput>
                 <div>남성</div>
               </label>
               <label>
-                <RadioInput type="radio" name="gender" value={1} checked={info.gender ==1} onChange={handleGender}></RadioInput>
+                <RadioInput type="radio" name="gender" value={2} checked={info.gender ==2} onChange={handleInputall}></RadioInput>
                 <div>여성</div>
               </label>
             </SexRadioBtn>
@@ -220,7 +193,7 @@ function EditProfile() {
               생년월일
             </GuideText>
             <InputDiv>
-                <NicknameInput type="text" name="date" value={info.birth} onChange={handleBirth}></NicknameInput>
+                <NicknameInput type="text" name="date" value={info.date} onChange={handleInputall}></NicknameInput>
             </InputDiv>
           </SmallEditDiv>
           <SmallEditDiv style={{marginTop:"40px",justifyContent:"start"}}> 
@@ -240,7 +213,7 @@ function EditProfile() {
             </GuideText>
             <InputDiv>
               <div>
-                <NicknameInput type="text" value={info.introduction} name="introduce" onChange={handleIntro}></NicknameInput>
+                <NicknameInput type="text" value={info.introduce} name="introduce" onChange={handleInputall}></NicknameInput>
               </div>
             </InputDiv>
           </SmallEditDiv>

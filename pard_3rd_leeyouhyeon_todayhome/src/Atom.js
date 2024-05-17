@@ -9,7 +9,7 @@ export const myInfo = atom({
         password: "", 
         nickname: "", 
         homepage: "", 
-        gender: 0, 
+        gender: 1, 
         date: "", 
         profileImage: "/프로필 이미지.png", 
         introduce: ""
