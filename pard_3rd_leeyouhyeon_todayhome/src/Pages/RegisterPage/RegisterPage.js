@@ -17,23 +17,12 @@ function RegisterPage() {
   });
   const [isSubmitokay, setIsSubmitokay] =useState(true);
 
-
-
-  const handleEmail = (e) =>{
-      setUserdata({...userdata, email: e.target.value});
-  };
-
-  const handlePassword = (e) =>{
-    setUserdata({...userdata, password: e.target.value});
-  };
-
-  const handlePasswordCheck = (e) =>{
-    setUserdata({...userdata, passwordCheck: e.target.value});
-  };
-
-  const handleNickname = (e) =>{
-    setUserdata({...userdata, nickname: e.target.value});
-  };
+  //이벤트 핸들러
+  const handleRegisterInput = (e) =>{
+    setUserdata({
+      ...userdata, 
+      [e.target.name]: e.target.value});
+  }
 
   useEffect(() => {
     if (
@@ -78,18 +67,18 @@ function RegisterPage() {
         <ContentFormDiv onSubmit={SubmitRegisterData}>
           <RegisterDiv>회원가입</RegisterDiv>
           <SubDiv style={{marginBottom:"12px"}}>이메일</SubDiv>
-          <InputDiv type="email" placeholder="이메일" onChange={handleEmail}></InputDiv>
+          <InputDiv type="email"  name="email" placeholder="이메일" onChange={handleRegisterInput}></InputDiv>
 
           <SubDiv style={{marginBottom:"13px"}}>비밀번호</SubDiv>
           <SubDiv style={{marginBottom:"9px"}}>영문, 숫자를 포함한 8자 이상의 비밀번호를 입력해주세요.</SubDiv>
-          <InputDiv type="password" placeholder="비밀번호" onChange={handlePassword}></InputDiv>
+          <InputDiv type="password" name="password"  placeholder="비밀번호" onChange={handleRegisterInput}></InputDiv>
 
           <SubDiv style={{marginBottom:"12px"}}>비밀번호 확인</SubDiv>
-          <InputDiv type="password" placeholder="비밀번호 확인" onChange={handlePasswordCheck}></InputDiv>
+          <InputDiv type="password"  name="passwordCheck" placeholder="비밀번호 확인" onChange={handleRegisterInput}></InputDiv>
 
           <SubDiv style={{marginBottom:"15px"}}>닉네임</SubDiv>
           <SubDiv style={{marginBottom:"8px"}}>다른 유저와 겹치지 않도록 입력해주세요. (2~15자)</SubDiv>
-          <InputDiv type="text" placeholder="별명 (2~15자)"  onChange={handleNickname} style={{marginBottom:"34px"}}></InputDiv>
+          <InputDiv type="text" name="nickname" placeholder="별명 (2~15자)"  onChange={handleRegisterInput} style={{marginBottom:"34px"}}></InputDiv>
           <RegisterBtn disabled={isSubmitokay}>회원가입하기</RegisterBtn>
 
           <LoginDiv>
