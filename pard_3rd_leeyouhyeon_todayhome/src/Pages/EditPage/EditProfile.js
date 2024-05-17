@@ -16,7 +16,7 @@ function EditProfile() {
 
   const [info, setInfo] =useState({
     email : {
-      fist : emailSplit[0],
+      first : emailSplit[0],
       second: emailSplit[1]
     },
     nickname : myinfo.nickname,
@@ -81,12 +81,16 @@ function EditProfile() {
     imageInput.current.click();
   }
 
+  const handleInputall = (e) =>{
+    console.log(e.target.name);
+  }
+
   // 이벤트 핸들러
-  const handleEmailfist = (e) =>{
+  const handleEmailfirst = (e) =>{
     setInfo({...info,
     email :{
       ...info.email,
-      fist: e.target.value
+      first: e.target.value
     }})
   }
 
@@ -140,7 +144,7 @@ function EditProfile() {
     console.log(info);
 
     const data = {
-      email: info.email.fist +"@"+info.email.second,
+      email: info.email.first +"@"+info.email.second,
       nickname: info.nickname,
       homepage : info.homepage,
       gender: info.gender,
@@ -160,10 +164,10 @@ function EditProfile() {
     <Div>
       <SubIndex subIndex="설정"/>
       <InfoEditForm onSubmit={submitInfo}>
-        <FistDiv>
+        <FirstDiv>
           <div>회원정보수정</div>
           <button>탈퇴하기</button>
-        </FistDiv>
+        </FirstDiv>
         <EditDiv>
           <SmallEditDiv>
             <GuideEmail>
@@ -172,9 +176,9 @@ function EditProfile() {
             </GuideEmail>
             <InputDiv>
               <div>
-                <EmailInput type="text" value={info.email.fist} onChange={handleEmailfist}></EmailInput>
+                <EmailInput type="text" name="first" value={info.email.first} onChange={handleEmailfirst}></EmailInput>
                 @
-                <EmailInput type="text" value={info.email.second} onChange={handleEmailSecond}></EmailInput>
+                <EmailInput type="text" name="second" value={info.email.second} onChange={handleEmailSecond}></EmailInput>
               </div>
               이메일을 변경하시려면 운영자에게 이메일을 보내주세요.
             </InputDiv>
@@ -185,7 +189,7 @@ function EditProfile() {
               <div>* 필수항목</div>
             </GuideEmail>
             <InputDiv>
-                <NicknameInput type="text" value={info.nickname} onChange={handleNickname}></NicknameInput>
+                <NicknameInput type="text"  name="nickname" value={info.nickname} onChange={handleNickname}></NicknameInput>
             </InputDiv>
           </SmallEditDiv>
           <SmallEditDiv style={{marginTop:"55px"}}> 
@@ -193,7 +197,7 @@ function EditProfile() {
               홈페이지
             </GuideText>
             <InputDiv>
-                <NicknameInput type="text" value={info.homepage} onChange={handleHomepage}></NicknameInput>
+                <NicknameInput type="text" name="homepage"  value={info.homepage} onChange={handleHomepage}></NicknameInput>
             </InputDiv>
           </SmallEditDiv>
           <SmallEditDiv style={{marginTop:"49px", justifyContent: "start"}}> 
@@ -202,11 +206,11 @@ function EditProfile() {
             </GuideText>
             <SexRadioBtn>
               <label>
-                <RadioInput type="radio" value={0} checked={info.gender ==0} onChange={handleGender}></RadioInput>
+                <RadioInput type="radio" name="gender" value={0} checked={info.gender ==0} onChange={handleGender}></RadioInput>
                 <div>남성</div>
               </label>
               <label>
-                <RadioInput type="radio" value={1} checked={info.gender ==1} onChange={handleGender}></RadioInput>
+                <RadioInput type="radio" name="gender" value={1} checked={info.gender ==1} onChange={handleGender}></RadioInput>
                 <div>여성</div>
               </label>
             </SexRadioBtn>
@@ -216,7 +220,7 @@ function EditProfile() {
               생년월일
             </GuideText>
             <InputDiv>
-                <NicknameInput type="text" value={info.birth} onChange={handleBirth}></NicknameInput>
+                <NicknameInput type="text" name="date" value={info.birth} onChange={handleBirth}></NicknameInput>
             </InputDiv>
           </SmallEditDiv>
           <SmallEditDiv style={{marginTop:"40px",justifyContent:"start"}}> 
@@ -227,7 +231,7 @@ function EditProfile() {
               <button type="button" onClick={onClickBtn}>
                 <img src={info.profileimage} alt="프로필 이미지"></img>
               </button>
-              <input type="file" ref={imageInput} onChange={handleProfileimg}></input>
+              <input type="file" ref={imageInput}  name="profileImage" onChange={handleProfileimg}></input>
             </EditProfileImgDiv>
           </SmallEditDiv>
           <SmallEditDiv style={{marginTop:"40px"}}> 
@@ -236,7 +240,7 @@ function EditProfile() {
             </GuideText>
             <InputDiv>
               <div>
-                <NicknameInput type="text" value={info.introduction} onChange={handleIntro}></NicknameInput>
+                <NicknameInput type="text" value={info.introduction} name="introduce" onChange={handleIntro}></NicknameInput>
               </div>
             </InputDiv>
           </SmallEditDiv>
@@ -269,7 +273,7 @@ const InfoEditForm =styled.form`
   margin-top: 61px;
 `;
 
-const FistDiv =styled.div`
+const FirstDiv =styled.div`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
